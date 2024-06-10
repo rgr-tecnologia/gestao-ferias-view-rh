@@ -165,9 +165,13 @@ export default function GestaoFeriasViewRh(
           const periodoAquisitivo = item
             ? new Date(item.PeriodoAquisitivo)
             : new Date(colaborador.DataAdmissao);
-          const dataLimiteAgendarFerias = new Date(periodoAquisitivo);
+          const dataLimiteSairFerias = new Date(periodoAquisitivo);
+          dataLimiteSairFerias.setDate(
+            dataLimiteSairFerias.getDate() + 365 * 2 - 61
+          );
+          const dataLimiteAgendarFerias = new Date(dataLimiteSairFerias);
           dataLimiteAgendarFerias.setDate(
-            dataLimiteAgendarFerias.getDate() + 320
+            dataLimiteAgendarFerias.getDate() - 45
           );
           return (
             <span>
@@ -188,7 +192,7 @@ export default function GestaoFeriasViewRh(
             : new Date(colaborador.DataAdmissao);
           const dataLimiteSairFerias = new Date(periodoAquisitivo);
           dataLimiteSairFerias.setDate(
-            dataLimiteSairFerias.getDate() + 365 * 2 - 1
+            dataLimiteSairFerias.getDate() + 365 * 2 - 61
           );
 
           return (
